@@ -1,5 +1,4 @@
 import "./scss/index.scss";
-
 import singleCountryTemplate from "./handle-bars/singleCountry.hbs";
 import listCountries from "./handle-bars/countriesList.hbs";
 
@@ -7,11 +6,11 @@ const debounce = require("lodash.debounce");
 
 import toastr from "toastr";
 import "toastr/build/toastr.css";
-import toastrOptions from "./toastrParams.js";
+import toastrOptions from "./js/toastrParams.js";
+
+import requestCountry from "./js/fetchCountries.js";
 
 // ---------------- Main params --------------
-
-const COUNTRY_REQUEST_HEAD = "https://restcountries.eu/rest/v2/name/";
 
 const refs = {
   inputCountry: document.querySelector("#countryName"),
@@ -21,10 +20,6 @@ const refs = {
 toastr.options = toastrOptions;
 
 // ----------------- Model ------------------
-
-const buildCountryRequest = (countryName) => {
-  return fetch(COUNTRY_REQUEST_HEAD + countryName);
-};
 
 const countriesResponseLogic = (countries) => {
   if (countries.length === 1) {
@@ -46,7 +41,7 @@ const handleInput = (e) => {
     return;
   }
 
-  buildCountryRequest(inputText)
+  requestCountry(inputText)
     .then((res) => {
       if (!res.ok) {
         throw Error(res.status);
