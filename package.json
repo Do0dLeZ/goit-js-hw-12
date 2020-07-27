@@ -11,6 +11,11 @@
   },
   "author": "Kolomiiets Eugene",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Do0dLeZ/goit-js-hw-12.git"
+  },
+  "homepage": "https://do0dlez.github.io/goit-js-hw-12/",
   "devDependencies": {
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^4.0.0",
